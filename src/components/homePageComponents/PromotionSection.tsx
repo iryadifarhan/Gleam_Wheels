@@ -9,7 +9,7 @@ export function PromotionSection() {
                     dengan melakukan transaksi 
                     minimal Rp.150,000 di <span className="underline">Gleam wheels</span>
                 </p>
-                <img className="max-h-24" src="/src/assets/BagCarLogo.png" alt="" />
+                <img className="max-h-24" src="./src/assets/BagCarLogo.png" alt="" />
             </div>
             <p className="italic font-light text-right text-xs pe-4">Syarat dan ketentuan berlaku</p>
         </div>

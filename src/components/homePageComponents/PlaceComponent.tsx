@@ -6,7 +6,7 @@ export function PlaceComponents(props: {place: Places}){
             <div className="textContainer py-1 px-2 ">
                 <h2 className="text-xl font-semibold mb-2">{props.place.name}</h2>
                 <div className="locationContainer flex gap-1">
-                    <img className="max-h-4 mt-0.5" src="/src/assets/PinLocation.svg" alt="" />  
+                    <img className="max-h-4 mt-0.5" src="./src/assets/PinLocation.svg" alt="" />  
                     <p className="text-xs">{props.place.location}</p>
                 </div>
                 <div className="feature relative flex items-center gap-1 max-w-[max(40vw)]">

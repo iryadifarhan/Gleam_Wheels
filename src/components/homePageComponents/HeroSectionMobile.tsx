@@ -9,7 +9,7 @@ export function HeroSectionMobile() {
                 <CurrentLocation />
             </div>
             <div className="imageContainer">
-                <img className="max-w-[max(40vw)]" src="/src/assets/WheelLogo.png" alt="" />
+                <img className="max-w-[max(40vw)]" src="./src/assets/WheelLogo.png" alt="" />
             </div>
         </div>
     )

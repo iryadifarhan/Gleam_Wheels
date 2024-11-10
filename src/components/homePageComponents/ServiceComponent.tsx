@@ -20,12 +20,12 @@ export function ServiceComponent(props: {service: Service}) {
                 <div className="container flex flex-col gap-2 mt-2">
                     <hr className="border"/>
                     <div className="duration flex gap-2 items-center">
-                        <img className="max-w-6" src="/src/assets/Clock.png" alt="" />
+                        <img className="max-w-6" src="./src/assets/Clock.png" alt="" />
                         <p>~{props.service.duration}</p>
                     </div>
                     <hr className="border"/>
                     <div className="duration flex gap-1.5 items-center">
-                        <img className="max-w-6" src="/src/assets/WalletLogo.png" alt="" />
+                        <img className="max-w-6" src="./src/assets/WalletLogo.png" alt="" />
                         <Pricing level={props.service.pricing} />
                     </div>
                     <hr className="border"/>

@@ -15,7 +15,7 @@ export function Navbar(props: {isMobile: boolean}) {
                 {"/" === path.pathname 
                 ? (
                     <>
-                        <div className="w-[calc(70%)] max-w-full h-px bg-blue-500 h-1 rounded-full"></div>
+                        <div className="w-[calc(70%)] max-w-full bg-blue-500 h-1 rounded-full"></div>
                         <HomeLogo color={"text-blue-500"} stroke={"none"} />
                     </>
                 ) 
@@ -31,7 +31,7 @@ export function Navbar(props: {isMobile: boolean}) {
                 {"/order" === path.pathname 
                 ? (
                     <>
-                        <div className="w-[calc(70%)] max-w-full h-px bg-blue-500 h-1 rounded-full"></div>
+                        <div className="w-[calc(70%)] max-w-full bg-blue-500 h-1 rounded-full"></div>
                         <OrderLogo color={"text-blue-500"} stroke={"none"} />
                     </>
                 ) 
@@ -47,7 +47,7 @@ export function Navbar(props: {isMobile: boolean}) {
                 {"/history" === path.pathname 
                 ? (
                     <>
-                        <div className="w-[calc(55%)] max-w-full h-px bg-blue-500 h-1 rounded-full"></div>
+                        <div className="w-[calc(55%)] max-w-full bg-blue-500 h-1 rounded-full"></div>
                         <HistoryLogo color={"text-blue-500"} stroke={"none"} />
                     </>
                 ) 
@@ -63,7 +63,7 @@ export function Navbar(props: {isMobile: boolean}) {
                 {"/profile" === path.pathname 
                 ? (
                     <>
-                        <div className="w-[calc(70%)] max-w-full h-px bg-blue-500 h-1 rounded-full"></div>
+                        <div className="w-[calc(70%)] max-w-full bg-blue-500 h-1 rounded-full"></div>
                         <ProfileLogo color={"text-blue-500"} stroke={"none"} />
                     </>
                 ) 
