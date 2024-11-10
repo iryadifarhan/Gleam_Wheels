@@ -23,7 +23,7 @@ export function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
+  <BrowserRouter basename='/gleam_wheels'>
     <App />
   </BrowserRouter>
 )
