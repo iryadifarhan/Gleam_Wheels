@@ -1,3 +1,4 @@
+import { PromotionInfoHeader } from "../components/orderPageComponents/mobile/PromotionInfoHeader";
 import { Navbar } from "../components/universal/Navbar";
 
 export function OrderPage(props: {isMobile: boolean}) {
@@ -5,11 +6,12 @@ export function OrderPage(props: {isMobile: boolean}) {
         props.isMobile
         ?
         <>
-        <p>Order page mobile</p>
+        <PromotionInfoHeader />
         <Navbar isMobile={props.isMobile} />
         </>
         :
         <>
+        <Navbar isMobile={props.isMobile} />
         <p>Order page desktop</p>
         </>
     )

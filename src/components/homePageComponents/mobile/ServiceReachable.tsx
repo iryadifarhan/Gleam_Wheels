@@ -1,4 +1,4 @@
-import { Service } from "../../dataUtils/IService"
+import { Service } from "../../../dataUtils/IService"
 import { ServiceComponent } from "./ServiceComponent"
 
 export function ServiceReachable(props: {
@@ -6,19 +6,19 @@ export function ServiceReachable(props: {
     search: string
 }) {
     return(
-        <div className="services mx-3 h-full">
-            <h2 className="font-bold text-lg">Layanan yang dapat ditemui</h2>
+        <div className="services h-full overflow-visible">
+            <h2 className="font-bold mx-5 text-lg">Layanan yang dapat ditemui</h2>
             {props.services.filter((it) => 
                     props.search == '' ? true : it.title.toLowerCase().includes(props.search.toLowerCase())
                 ).length > 0 
             ? 
-            (<div className="container flex w-full gap-6 overflow-x-scroll mt-1 snap-x no-scrollbar overflow-y-visible">
+            (<div className="container flex w-full gap-6 overflow-x-scroll mt-1 no-scrollbar overflow-y-visible">
                 {props.services.filter((it) => 
                     props.search == '' ? true : it.title.toLowerCase().includes(props.search.toLowerCase())
-                ).map((it) => <ServiceComponent key={it.title} service={it} />)}
+                ).map((it, index) => <ServiceComponent key={it.title} service={it} isFirst={index == 0} isLast={index == props.services.length - 1}/>)}
             </div>) 
             :
-            <p>Layanan yang Anda cari tidak dapat ditemukan!</p>
+            <p className="mx-5">Layanan yang Anda cari tidak dapat ditemukan!</p>
             } 
         </div>
     )

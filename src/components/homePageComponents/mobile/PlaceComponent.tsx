@@ -1,4 +1,4 @@
-import { Places } from "../../dataUtils/IPlaces"
+import { Places } from "../../../dataUtils/IPlaces"
 
 export function PlaceComponents(props: {place: Places}){
     return(

@@ -10,6 +10,7 @@ export function HistoryPage(props: {isMobile: boolean}) {
         </>
         :
         <>
+        <Navbar isMobile={props.isMobile} />
         <p>History page desktop</p>
         </>
      )

@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css'
 import { BrowserRouter } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import RoutesIndex from './routes';
+import RoutesIndex from './routes/routes';
 
 export function App() {
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 600)

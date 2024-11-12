@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom"
-import HomeLogo from "../../assets/NavMobilSvg/HomeLogo"
-import OrderLogo from "../../assets/NavMobilSvg/OrderLogo"
-import HistoryLogo from "../../assets/NavMobilSvg/HistoryLogo"
-import ProfileLogo from "../../assets/NavMobilSvg/ProfileLogo"
+import HomeLogo from "../../assets/NavMobileSvg/HomeLogo"
+import OrderLogo from "../../assets/NavMobileSvg/OrderLogo"
+import HistoryLogo from "../../assets/NavMobileSvg/HistoryLogo"
+import ProfileLogo from "../../assets/NavMobileSvg/ProfileLogo"
 
 export function Navbar(props: {isMobile: boolean}) {
     const path = useLocation()
@@ -21,7 +21,7 @@ export function Navbar(props: {isMobile: boolean}) {
                 ) 
                 : (
                     <>
-                        <div className="w-[calc(70%)] h-px bg-transparent max-w-full h-1 rounded-full"></div>
+                        <div className="w-[calc(70%)] bg-transparent max-w-full h-1 rounded-full"></div>
                         <HomeLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
@@ -32,12 +32,12 @@ export function Navbar(props: {isMobile: boolean}) {
                 ? (
                     <>
                         <div className="w-[calc(70%)] max-w-full bg-blue-500 h-1 rounded-full"></div>
-                        <OrderLogo color={"text-blue-500"} stroke={"none"} />
+                        <OrderLogo color={"text-blue-500"} stroke={"currentColor"} />
                     </>
                 ) 
                 : (
                     <>
-                        <div className="w-[calc(70%)] h-px bg-transparent max-w-full h-1 rounded-full"></div>
+                        <div className="w-[calc(70%)] bg-transparent max-w-full h-1 rounded-full"></div>
                         <OrderLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
@@ -48,12 +48,12 @@ export function Navbar(props: {isMobile: boolean}) {
                 ? (
                     <>
                         <div className="w-[calc(55%)] max-w-full bg-blue-500 h-1 rounded-full"></div>
-                        <HistoryLogo color={"text-blue-500"} stroke={"none"} />
+                        <HistoryLogo color={"text-blue-500"} stroke={"currentColor"} />
                     </>
                 ) 
                 : (
                     <>
-                        <div className="w-[calc(70%)] h-px bg-transparent max-w-full h-1 rounded-full"></div>
+                        <div className="w-[calc(70%)] bg-transparent max-w-full h-1 rounded-full"></div>
                         <HistoryLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
@@ -69,7 +69,7 @@ export function Navbar(props: {isMobile: boolean}) {
                 ) 
                 : (
                     <>
-                        <div className="w-[calc(70%)] h-px bg-transparent max-w-full h-1 rounded-full"></div>
+                        <div className="w-[calc(70%)] bg-transparent max-w-full h-1 rounded-full"></div>
                         <ProfileLogo color={"text-white"} stroke={"black"} />
                     </>
                 )
@@ -78,6 +78,6 @@ export function Navbar(props: {isMobile: boolean}) {
             </Link>
         </div>
         :
-        <p></p>
+        <p>Navbar Dekstop</p>
     )
 }

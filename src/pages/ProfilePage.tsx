@@ -10,6 +10,7 @@ export function ProfilePage(props: {isMobile: boolean}) {
         </>
         :
         <>
+        <Navbar isMobile={props.isMobile} />
         <p>Profile page desktop</p>
         </>
     )

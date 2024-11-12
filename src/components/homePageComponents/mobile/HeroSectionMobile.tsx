@@ -1,4 +1,4 @@
-import { CurrentLocation } from "./CurrentLocation";
+import { CurrentLocation } from "../../universal/CurrentLocation";
 
 export function HeroSectionMobile() {
     return( 
