@@ -3,5 +3,8 @@ export interface Places {
     location: string,
     rating: number,
     features: Array<string>,
-    imgSource: string
+    imgSource: string,
+    pricing: number,
+    queue: number,
+    capacity: number,
 }

@@ -25,7 +25,7 @@ export function Navbar(props: {isMobile: boolean}) {
                         <HomeLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
-                <h1 className="font-bold">Home</h1>
+                <h1 className="font-semibold">Home</h1>
             </Link>
             <Link className="flex flex-col gap-1 items-center" to={"/order"}>
                 {"/order" === path.pathname 
@@ -41,7 +41,7 @@ export function Navbar(props: {isMobile: boolean}) {
                         <OrderLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
-                <h1 className="font-bold">Pesan</h1>
+                <h1 className="font-semibold">Pesan</h1>
             </Link>
             <Link className="flex flex-col gap-1 items-center" to={"/history"}>
                 {"/history" === path.pathname 
@@ -57,7 +57,7 @@ export function Navbar(props: {isMobile: boolean}) {
                         <HistoryLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
-                <h1 className="font-bold">Riwayat</h1>
+                <h1 className="font-semibold">Riwayat</h1>
             </Link>
             <Link className="flex flex-col gap-1 items-center" to={"/profile"}>
                 {"/profile" === path.pathname 
@@ -74,7 +74,7 @@ export function Navbar(props: {isMobile: boolean}) {
                     </>
                 )
                 }
-                <h1 className="font-bold">Profil</h1>
+                <h1 className="font-semibold">Profil</h1>
             </Link>
         </div>
         :

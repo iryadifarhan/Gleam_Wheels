@@ -6,7 +6,7 @@ export function PromotionInfoHeader() {
             <div className="py-3 px-5">
                 <CurrentLocation />
             </div>
-            <div className="relative flex flex-col bg-gradient-to-tr from-[#235999] to-[#3A94FF] text-white flex rounded-xl px-5 py-2">
+            <div className="relative flex flex-col bg-gradient-to-tr from-[#235999] to-[#3A94FF] text-white flex rounded-lg px-5 py-2">
                 <h1 className="font-semibold pt-1">Full detailing dengan potongan <br />
                 harga??, kapan lagi!</h1>
                 <div className="flex max-w-screen-lg justify-between">

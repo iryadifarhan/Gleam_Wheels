@@ -26,7 +26,7 @@ export function MobileBody() {
 
     return(
         <div className="menuBody flex flex-col mt-2 gap-y-4 pb-24">
-            <SearchBar search={search} setSearch={setSearch} />
+            <SearchBar search={search} setSearch={setSearch} searchPlaceHolder={"Cari layanan kebersihan"} />
             <PromotionSection />
             <ServiceReachable services={services} search={search} />
             <RecommendedPlaces places={places}/>
