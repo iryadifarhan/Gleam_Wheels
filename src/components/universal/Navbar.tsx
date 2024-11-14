@@ -11,7 +11,7 @@ export function Navbar(props: {isMobile: boolean}) {
         props.isMobile 
         ?
         <div className="navbar fixed bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full bg-white drop-shadow-lg w-[calc(100%-2rem)] h-16 px-9 flex items-center gap-8 justify-center">
-            <Link className="flex flex-col gap-1 items-center" to={"/"}>
+            <Link className="flex flex-col gap-1 items-center max-h-[59px]" to={"/"}>
                 {"/" === path.pathname 
                 ? (
                     <>
@@ -25,9 +25,9 @@ export function Navbar(props: {isMobile: boolean}) {
                         <HomeLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
-                <h1 className="font-semibold">Home</h1>
+                <h1 className="font-semibold text-[max(3.7vw)]">Home</h1>
             </Link>
-            <Link className="flex flex-col gap-1 items-center" to={"/order"}>
+            <Link className="flex flex-col gap-1 items-center max-h-[59px]" to={"/order"}>
                 {"/order" === path.pathname 
                 ? (
                     <>
@@ -41,9 +41,9 @@ export function Navbar(props: {isMobile: boolean}) {
                         <OrderLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
-                <h1 className="font-semibold">Pesan</h1>
+                <h1 className="font-semibold text-[max(3.7vw)]">Pesan</h1>
             </Link>
-            <Link className="flex flex-col gap-1 items-center" to={"/history"}>
+            <Link className="flex flex-col gap-1 items-center max-h-[59px]" to={"/history"}>
                 {"/history" === path.pathname 
                 ? (
                     <>
@@ -57,9 +57,9 @@ export function Navbar(props: {isMobile: boolean}) {
                         <HistoryLogo color={"text-white"} stroke={"black"} />
                     </>
                 )}
-                <h1 className="font-semibold">Riwayat</h1>
+                <h1 className="font-semibold text-[max(3.7vw)]">Riwayat</h1>
             </Link>
-            <Link className="flex flex-col gap-1 items-center" to={"/profile"}>
+            <Link className="flex flex-col gap-1 items-center max-h-[59px]" to={"/profile"}>
                 {"/profile" === path.pathname 
                 ? (
                     <>
@@ -74,7 +74,7 @@ export function Navbar(props: {isMobile: boolean}) {
                     </>
                 )
                 }
-                <h1 className="font-semibold">Profil</h1>
+                <h1 className="font-semibold text-[max(3.7vw)]">Profil</h1>
             </Link>
         </div>
         :

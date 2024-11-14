@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import './index.css'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import RoutesIndex from './routes/routes';
 
@@ -23,7 +23,7 @@ export function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <BrowserRouter basename='/gleam_wheels'>
+  <HashRouter>
     <App />
-  </BrowserRouter>
+  </HashRouter>
 )
