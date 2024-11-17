@@ -11,7 +11,7 @@ export function PromotionSection() {
                 </p>
                 <img className="max-h-[max(20vw)]" src="./src/assets/BagCarLogo.png" alt="" />
             </div>
-            <p className="italic font-light text-right text-[max(2.8vw)]">Syarat dan ketentuan berlaku</p>
+            <p className="italic font-light text-right text-[max(2.3vw)]">Syarat dan ketentuan berlaku</p>
         </div>
     )
 }

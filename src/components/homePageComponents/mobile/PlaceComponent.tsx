@@ -9,16 +9,19 @@ export function PlaceComponents(props: {place: Places}){
                     <img className="max-h-4 mt-0.5" src="./src/assets/PinLocation.svg" alt="" />  
                     <p className="text-[max(2.7vw)]">{props.place.location}</p>
                 </div>
-                <div className="feature relative flex items-center gap-1">
-                    <p className="text-5xl font-bold text-[#232D40]">★</p>
-                    <p className="absolute top-[1.65em] left-3 text-xs">{props.place.rating}</p>
-                    
+                <div className="feature flex items-center gap-1">
+                    <div className="containerStar relative">
+                        <p className="text-5xl font-bold text-[#232D40]">★</p>
+                        <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3 text-[max(2.5vw)]">
+                            {Math.round(props.place.rating * 10) / 10}
+                        </p>
+                    </div>
                     <div className="flex gap-1 overflow-x-scroll no-scrollbar">
                         {props.place.features.map((it) => (<p key={it} className="text-nowrap text-[max(2.5vw)] bg-[#232D40] mt-3 p-1 rounded-xl">{it}</p>))}
                     </div>
                 </div>
             </div>
-            <img className="object-cover w-[max(45vw)] min-h-32 rounded-xl" src={props.place.imgSource} alt="" />
+            <img className="object-cover w-[max(45vw)] min-h-32 rounded-xl" src={props.place.img_source} alt="" />
         </div>
     )
 }

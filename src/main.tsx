@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import './index.css'
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import RoutesIndex from './routes/routes';
 

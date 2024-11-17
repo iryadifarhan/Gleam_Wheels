@@ -5,23 +5,35 @@ import { OrderPage } from "../pages/OrderPage";
 import { HistoryPage } from "../pages/HistoryPage";
 import { ProfilePage } from "../pages/ProfilePage";
 import { getServiceDatas } from "../dataUtils/getServiceDatas";
-import { getPlacesDatas } from "../dataUtils/getPlacesDatas";
 import { useEffect, useState } from "react";
 import { Places } from "../dataUtils/IPlaces";
 import { Service } from "../dataUtils/IService";
+import Api from "../api";
 
 function RoutesIndex(props: {isMobile: boolean}) {
     const[services, setServices] = useState<Service[]>([])
     const[places, setPlaces] = useState<Places[]>([])
 
+    const fetchDataPlaces = async () => {
+
+        //fetch data from API with Axios
+        await Api.get('/api/places')
+            .then(response => {
+                
+                //assign response data to state "posts"
+                console.log(response.data.data)
+                setPlaces(response.data.data);
+            })
+        
+    }
+
     useEffect(() => {
         // Simulate fetching data or some other initialization logic
         const initialServices = getServiceDatas()
-        const initialPlaces = getPlacesDatas()
 
         // Set the services state with initial data
-        setServices(initialServices);
-        setPlaces(initialPlaces)
+        setServices(initialServices)
+        fetchDataPlaces()
     }, []); 
 
     return (

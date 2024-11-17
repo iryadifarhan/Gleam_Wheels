@@ -6,12 +6,64 @@ import { FilterComponent } from "./FilterComponent";
 
 export function MobileBody(props: {places: Places[]}) {
     const[search, setSearch] = useState('')
+    const[filterFeature, setFilterFeature] = useState([''])
+    const[filterRating, setFitlerRating] = useState(false)
+    const[filterRange, setFilterRange] = useState(false)
 
+    const[buttonActives, setButtonActives] = useState([-1])
+
+    const toggleButtonActive = (index: number) => {
+        setButtonActives((prevFeatures) => {
+            if (prevFeatures.includes(index)) {
+                // Remove feature
+                return prevFeatures.filter((f) => f !== index)
+            } else {
+                // Add feature
+                return [...prevFeatures, index]
+            }
+        })
+    }
+
+    const toggleFilterFeature = (feature: string, index: number) => {
+        toggleButtonActive(index)
+        setFilterFeature((prevFeatures) => {
+            if (prevFeatures.includes(feature)) {
+                // Remove feature
+                return prevFeatures.filter((f) => f !== feature)
+            } else {
+                // Add feature
+                return [...prevFeatures, feature]
+            }
+        })
+    }
+
+    const toggleFilterRating = (index: number) => {
+        toggleButtonActive(index)
+        setFitlerRating(() => {
+            if(filterRating == true) {
+                return false
+            } else {
+                return true
+            }
+        })
+    }
+
+    const toggleFilterRange = (index: number) => {
+        toggleButtonActive(index)
+        setFilterRange(() => {
+            if(filterRange == true) {
+                return false
+            } else {
+                return true
+            }
+        })
+    }
+    
     return(
-        <div className="orderBody my-8 pb-24">
+        <div className="orderBody my-8 pb-20">
             <SearchBar search={search} setSearch={setSearch} searchPlaceHolder={"Cari tempat cuci kendaraan"} />
-            <FilterComponent />
-            <PlaceContents places={props.places} search={search} />
+            <FilterComponent setFilterFeature={toggleFilterFeature} setFilterRating={toggleFilterRating} buttonActives={buttonActives} setFilterRange={toggleFilterRange}  />
+            <PlaceContents places={props.places} search={search} filterFeatures={filterFeature} filterRating={filterRating} filterRange={filterRange} />
         </div>
     )
 }
