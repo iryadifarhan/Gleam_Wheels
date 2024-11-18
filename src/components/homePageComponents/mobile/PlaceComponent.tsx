@@ -12,7 +12,7 @@ export function PlaceComponents(props: {place: Places}){
                 <div className="feature flex items-center gap-1">
                     <div className="containerStar relative">
                         <p className="text-5xl font-bold text-[#232D40]">★</p>
-                        <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3 text-[max(2.5vw)]">
+                        <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/4 text-[max(2.5vw)]">
                             {Math.round(props.place.rating * 10) / 10}
                         </p>
                     </div>

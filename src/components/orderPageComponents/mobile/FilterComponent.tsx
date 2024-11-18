@@ -6,7 +6,7 @@ export function FilterComponent(props: {
     setFilterRange: any,
     buttonActives: Array<number>
 }) {
-    const filters = ["Terdekat", "Rating tertinggi", "Full Car Wash", "Polishing", "Detailing", "Undercarriage", "Coating", "Paint Protection Film"]
+    const filters = ["Terdekat", "Rating tertinggi", "Full Car Wash", "Polishing", "Detailing", "Undercarriage", "Coating", "Paint Protection Film", "Interior"]
 
     return(
         <>

@@ -1,3 +1,5 @@
+import { MobileBody } from "../components/historyPageComponents/mobile/MobileBody";
+import { TopHeader } from "../components/historyPageComponents/mobile/TopHeader";
 import { Navbar } from "../components/universal/Navbar";
 
 export function HistoryPage(props: {isMobile: boolean}) {
@@ -5,7 +7,8 @@ export function HistoryPage(props: {isMobile: boolean}) {
         props.isMobile
         ?
         <>
-        <p>History page mobile</p>
+        <TopHeader />
+        <MobileBody />
         <Navbar isMobile={props.isMobile} />
         </>
         :

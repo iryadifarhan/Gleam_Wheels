@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Places } from "../../../dataUtils/IPlaces";
 import { SearchBar } from "../../universal/SearchBar";
 import { PlaceContents } from "./PlaceContents";
 import { FilterComponent } from "./FilterComponent";
+import { useSearchParams } from "react-router-dom";
+
 
 export function MobileBody(props: {places: Places[]}) {
     const[search, setSearch] = useState('')
@@ -25,7 +27,10 @@ export function MobileBody(props: {places: Places[]}) {
     }
 
     const toggleFilterFeature = (feature: string, index: number) => {
-        toggleButtonActive(index)
+        if(index > 0) {
+            toggleButtonActive(index)
+        }
+
         setFilterFeature((prevFeatures) => {
             if (prevFeatures.includes(feature)) {
                 // Remove feature
@@ -59,6 +64,17 @@ export function MobileBody(props: {places: Places[]}) {
         })
     }
     
+    const [searchParams] = useSearchParams()
+    const feature = searchParams.get("feature");
+    const indexFeature = searchParams.get("index")
+
+    // Only invoke toggleFilterFeature when "feature" changes
+    useEffect(() => {
+        if (feature) {
+            toggleFilterFeature(feature, Number(indexFeature));
+        }
+    }, [feature]);
+
     return(
         <div className="orderBody my-8 pb-20">
             <SearchBar search={search} setSearch={setSearch} searchPlaceHolder={"Cari tempat cuci kendaraan"} />

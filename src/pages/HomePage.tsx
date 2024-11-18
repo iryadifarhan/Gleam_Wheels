@@ -4,13 +4,15 @@ import { TopHeader } from "../components/homePageComponents/mobile/TopHeader";
 import { Navbar } from "../components/universal/Navbar";
 import { Places } from "../dataUtils/IPlaces";
 import { Service } from "../dataUtils/IService";
+import { User } from "../dataUtils/IUser";
 
-export function HomePage(props: {isMobile: boolean, services: Service[], places: Places[]}) {
+export function HomePage(props: {isMobile: boolean, services: Service[], places: Places[], 
+    isLogged: boolean, user: User, setLog:any, setUser:any}) {
     return(
         props.isMobile
         ?   //mobile
         <>
-        <TopHeader />
+        <TopHeader isLogged={props.isLogged} user={props.user} setLog={props.setLog} setUser={props.setUser} />
         <HeroSectionMobile />
         <MobileBody services={props.services} places={props.places} />
         <Navbar isMobile={props.isMobile} />
