@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../../../dataUtils/IUser';
 
-export function TopHeader(props:{isLogged: boolean, user: User, setLog:any, setUser:any}) {
+export function TopHeader(props:{isLogged: boolean, user: User, setLog:any, setUser:any, isLoading:boolean}) {
     const [isModalVisible, setModalVisible] = useState(false)
 
     const showModal = () => {
@@ -11,9 +11,9 @@ export function TopHeader(props:{isLogged: boolean, user: User, setLog:any, setU
 
     return (
         <div className="flex justify-center mx-5 py-3">
-            <h2 className="flex-auto font-semibold text-stone-700 text-[max(4.2vw)] mt-1">{`Selamat datang${props.isLogged ? `, ${props.user.username}` : ""}`}</h2>
+            <h2 className="flex-auto font-semibold text-stone-700 text-[max(4.2vw)] mt-1">{`Selamat datang${props.isLogged ? `, ${!props.isLoading ? props.user.username : "user"}` : ""}`}</h2>
             <div className="relative">
-                <img onClick={() => showModal()} className="object-contain w-10" src="/gleam_wheels/assetsImg/Profile.png" alt="tes" />
+                <img onClick={() => showModal()} className={`object-contain w-10 ${isModalVisible ? "brightness-[0.7]" : ""}`} src="/gleam_wheels/assetsImg/Profile.png" alt="tes" />
                 {isModalVisible && (
                     <div className="absolute top-12 right-0 bg-white shadow-lg rounded-lg p-4 w-[200px] z-50 shadow-[0_1px_7px_0_rgba(0,0,0,0.7)]">
                         {
@@ -30,8 +30,10 @@ export function TopHeader(props:{isLogged: boolean, user: User, setLog:any, setU
                             </>
                             :
                             <>
+                                <p className='font-semibold'>{props.user.username}</p>
+                                <p className='text-slate-500 mb-1'>{props.user.email}</p>
                                 <button onClick={() => {localStorage.removeItem('authToken'); props.setLog(false); props.setUser({})}}
-                                 className='w-full bg-[#3A94FF] my-1 rounded-xl font-semibold text-[max(4.2vw)] text-white p-1'>Log out
+                                 className='w-full bg-[#3A94FF] my-2 rounded-xl font-semibold text-[max(4.2vw)] text-white p-1'>Log out
                                 </button>
                             </>
                         }

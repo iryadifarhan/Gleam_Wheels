@@ -7,12 +7,12 @@ import { Service } from "../dataUtils/IService";
 import { User } from "../dataUtils/IUser";
 
 export function HomePage(props: {isMobile: boolean, services: Service[], places: Places[], 
-    isLogged: boolean, user: User, setLog:any, setUser:any}) {
+    isLogged: boolean, user: User, setLog:any, setUser:any, isLoading:boolean}) {
     return(
         props.isMobile
         ?   //mobile
         <>
-        <TopHeader isLogged={props.isLogged} user={props.user} setLog={props.setLog} setUser={props.setUser} />
+        <TopHeader isLogged={props.isLogged} user={props.user} setLog={props.setLog} setUser={props.setUser} isLoading={props.isLoading} />
         <HeroSectionMobile />
         <MobileBody services={props.services} places={props.places} />
         <Navbar isMobile={props.isMobile} />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Api from "../api";
+import { ArrowLogo } from "../assets/ArrowLogo";
 
 export function RegisterPage(props: {setLog:any, setUser:any}) {
     const navigate = useNavigate()
@@ -98,7 +99,9 @@ export function RegisterPage(props: {setLog:any, setUser:any}) {
         <>
         <div className="container mx-auto w-[max(70vw)] py-4">
             <Link to={"/"}>
-                <button className="absolute top-5 left-3 px-3 py-2 bg-[#3A94FF] text-white rounded-full font-extrabold text-xl">&larr;</button>
+                <div className="absolute top-5 left-3 px-3 py-2 bg-[#3A94FF] rounded-full font-extrabold text-xl">
+                    <ArrowLogo />
+                </div>
             </Link>
             <img className="p-4 pb-0" src="/gleam_wheels/assetsImg/LogoGleamWheels.jpg" alt="" />
             <form

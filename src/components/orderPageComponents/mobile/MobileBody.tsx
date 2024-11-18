@@ -11,6 +11,7 @@ export function MobileBody(props: {places: Places[]}) {
     const[filterFeature, setFilterFeature] = useState([''])
     const[filterRating, setFitlerRating] = useState(false)
     const[filterRange, setFilterRange] = useState(false)
+    const[filterAvailable, setFilterAvailable] = useState(false)
 
     const[buttonActives, setButtonActives] = useState([-1])
 
@@ -63,6 +64,13 @@ export function MobileBody(props: {places: Places[]}) {
             }
         })
     }
+
+    const toggleFilterAvailable = (index:number) => {
+        toggleButtonActive(index)
+        setFilterAvailable(() => {
+            return !filterAvailable
+        })
+    }
     
     const [searchParams] = useSearchParams()
     const feature = searchParams.get("feature");
@@ -78,8 +86,8 @@ export function MobileBody(props: {places: Places[]}) {
     return(
         <div className="orderBody my-8 pb-20">
             <SearchBar search={search} setSearch={setSearch} searchPlaceHolder={"Cari tempat cuci kendaraan"} />
-            <FilterComponent setFilterFeature={toggleFilterFeature} setFilterRating={toggleFilterRating} buttonActives={buttonActives} setFilterRange={toggleFilterRange}  />
-            <PlaceContents places={props.places} search={search} filterFeatures={filterFeature} filterRating={filterRating} filterRange={filterRange} />
+            <FilterComponent setFilterFeature={toggleFilterFeature} setFilterRating={toggleFilterRating} buttonActives={buttonActives} setFilterRange={toggleFilterRange} setFilterAvailable={toggleFilterAvailable}/>
+            <PlaceContents places={props.places} search={search} filterFeatures={filterFeature} filterRating={filterRating} filterRange={filterRange} filterAvailable={filterAvailable}/>
         </div>
     )
 }

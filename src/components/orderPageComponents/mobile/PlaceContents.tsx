@@ -9,12 +9,14 @@ export function PlaceContents(props: {
     filterFeatures: Array<string>,
     filterRating: boolean,
     filterRange: boolean,
+    filterAvailable:boolean
 }) {
     const filteredData = props.places.filter((place) => {
         const searchFlag = props.search == '' ? true : place.name.toLowerCase().includes(props.search.toLowerCase())
         const featureFlag = props.filterFeatures.length > 1 ? props.filterFeatures.some((feature) => place.features.includes(feature)) : true
+        const availableFlag = props.filterAvailable ? place.queue < place.capacity : true
 
-        return searchFlag && featureFlag
+        return searchFlag && featureFlag && availableFlag
     })
 
     return( 

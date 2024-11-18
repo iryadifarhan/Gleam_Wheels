@@ -4,7 +4,7 @@ import { Pricing } from "../../universal/PricingDollar";
 
 export function ServiceComponent(props: {service: Service, isFirst: boolean, isLast: boolean}) {
     const featureArg = props.service.title.includes("Full Body Car Wash") ? "Full Car Wash" : props.service.title.includes("Detailing") ? "Detailing" : props.service.title.includes("Polish") ? "Polishing" : props.service.title.includes("Interior") ? "Interior" : ""
-    const indexArg = featureArg.includes("Full Car Wash") ? 2 : featureArg.includes("Detailing") ? 4 : featureArg.includes("Polishing") ? 3 : featureArg.includes("Interior") ? 8 : -1
+    const indexArg = featureArg.includes("Full Car Wash") ? 3 : featureArg.includes("Detailing") ? 5 : featureArg.includes("Polishing") ? 4 : featureArg.includes("Interior") ? 9 : -1
 
     return(
         <div key={props.service.title} className={`${props.isFirst == true ? 'ms-5' : ''} ${props.isLast == true  ? 'me-5' : ''} service bg-gradient-to-tr from-[#235999] to-[#3A94FF] text-white flex max-w-52 rounded-xl shadow-[0_1px_15px_0_rgba(0,0,0,0.7)]`}>

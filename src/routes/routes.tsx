@@ -17,59 +17,68 @@ function RoutesIndex(props: {isMobile: boolean}) {
     const[services, setServices] = useState<Service[]>([])
     const[places, setPlaces] = useState<Places[]>([])
     const [user, setUser] = useState<User>({} as User);
+
     const[isLogged, setLog] = useState(false)
-    
+    const[isLoading, setLoading] = useState(true)
+    const[dataUserPending, setUserPending] = useState(true)
+    const[dataPlacePending, setPlacePending] = useState(true)
+
+    // Update `isLoading` whenever pending states change
     useEffect(() => {
-        // Define an async function inside useEffect
+        if (!dataUserPending && !dataPlacePending) {
+            setLoading(false);
+        }
+    }, [dataUserPending, dataPlacePending]);
+
+    // Check user token and autologin
+    useEffect(() => {
         const checkToken = async () => {
-            // Check if there is a token in localStorage
-            const token = localStorage.getItem('authToken');
+            const token = localStorage.getItem("authToken");
             if (token) {
-                // If token exists, set the user as logged in
                 setLog(true);
-    
                 try {
-                    const response = await Api.post('/api/users/autologin', {}, {
-                        headers: { Authorization: `Bearer ${token}` }
-                    });
+                    const response = await Api.post(
+                        "/api/users/autologin",
+                        {},
+                        { headers: { Authorization: `Bearer ${token}` } }
+                    );
                     setUser(response.data.data);
                 } catch (error) {
                     console.error("Error fetching user data:", error);
+                } finally {
+                    setUserPending(false);
                 }
+            } else {
+                setUserPending(false);
             }
         };
-    
-        // Call the async function
+
         checkToken();
     }, []);
 
-    const fetchDataPlaces = async () => {
-
-        //fetch data from API with Axios
-        await Api.get('/api/places')
-            .then(response => {
-                
-                //assign response data to state "posts"
-                console.log(response.data.data)
-                setPlaces(response.data.data);
-            })
-        
-    }
-
+    // Fetch places data
     useEffect(() => {
-        // Simulate fetching data or some other initialization logic
-        const initialServices = getServiceDatas()
+        const fetchDataPlaces = async () => {
+            try {
+                const response = await Api.get("/api/places");
+                setPlaces(response.data.data);
+            } catch (error) {
+                console.error("Error fetching places data:", error);
+            } finally {
+                setPlacePending(false);
+            }
+        };
 
-        // Set the services state with initial data
-        setServices(initialServices)
-        fetchDataPlaces()
-    }, []); 
+        const initialServices = getServiceDatas();
+        setServices(initialServices);
+        fetchDataPlaces();
+    }, []);
 
     return (
         <Routes>
             {/* route "/" */}
             <Route path="/" element={<HomePage isMobile={props.isMobile} services={services} places={places} 
-            isLogged={isLogged} user={user} setLog={setLog} setUser={setUser} />} />  
+            isLogged={isLogged} user={user} setLog={setLog} setUser={setUser} isLoading={isLoading} />} />  
 
             {/* route "/order" */}
             <Route path="/order" element={<OrderPage isMobile={props.isMobile} places={places} />} />          
