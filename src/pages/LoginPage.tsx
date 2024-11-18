@@ -63,7 +63,7 @@ export function LoginPage(props: {setLog: any, setUser: any}) {
             <Link to={"/"}>
                 <button className="absolute top-5 left-3 px-3 py-2 bg-[#3A94FF] text-white rounded-full font-extrabold text-xl">&larr;</button>
             </Link>
-            <img className="p-4 pb-0" src="./src/assets/LogoGleamWheels.jpg" alt="" />
+            <img className="p-4 pb-0" src="/gleam_wheels/assetsImg/LogoGleamWheels.jpg" alt="" />
             <div className="flex flex-col bg-[#3A94FF] rounded-xl px-4 text-white gap-4 pb-5 pt-3">
                 <h2 className="font-bold text-center text-[max(5vw)]">Login to Account</h2>
                 <div className="email w-full flex flex-col">

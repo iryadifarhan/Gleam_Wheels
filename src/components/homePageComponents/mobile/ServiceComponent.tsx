@@ -13,12 +13,12 @@ export function ServiceComponent(props: {service: Service, isFirst: boolean, isL
                 <div className="container flex flex-col gap-2 mt-2">
                     <hr className="border "/>
                     <div className="duration flex gap-2 items-center">
-                        <img className="w-[max(6.25vw)]" src="./src/assets/Clock.png" alt="" />
+                        <img className="w-[max(6.25vw)]" src="/gleam_wheels/assetsImg/Clock.png" alt="" />
                         <p className="text-[max(4.2vw)]">~{props.service.duration}</p>
                     </div>
                     <hr className="border"/>
                     <div className="duration flex gap-1.5 items-center">
-                        <img className="w-[max(6.25vw)]" src="./src/assets/WalletLogo.png" alt="" />
+                        <img className="w-[max(6.25vw)]" src="/gleam_wheels/assetsImg/WalletLogo.png" alt="" />
                         <Pricing level={props.service.pricing} amountStars={5} />
                     </div>
                     <hr className="border"/>

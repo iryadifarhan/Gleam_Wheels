@@ -13,7 +13,7 @@ export function TopHeader(props:{isLogged: boolean, user: User, setLog:any, setU
         <div className="flex justify-center mx-5 py-3">
             <h2 className="flex-auto font-semibold text-stone-700 text-[max(4.2vw)] mt-1">{`Selamat datang${props.isLogged ? `, ${props.user.username}` : ""}`}</h2>
             <div className="relative">
-                <img onClick={() => showModal()} className="object-contain w-10" src="./src/assets/Profile.png" alt="tes" />
+                <img onClick={() => showModal()} className="object-contain w-10" src="/gleam_wheels/assetsImg/Profile.png" alt="tes" />
                 {isModalVisible && (
                     <div className="absolute top-12 right-0 bg-white shadow-lg rounded-lg p-4 w-[200px] z-50 shadow-[0_1px_7px_0_rgba(0,0,0,0.7)]">
                         {

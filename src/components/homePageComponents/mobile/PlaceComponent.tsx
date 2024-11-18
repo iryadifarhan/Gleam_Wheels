@@ -6,7 +6,7 @@ export function PlaceComponents(props: {place: Places}){
             <div className="textContainer py-1 px-2 w-[max(44vw)]">
                 <h2 className="text-[max(4.75vw)] font-semibold mb-2">{props.place.name}</h2>
                 <div className="locationContainer flex gap-1">
-                    <img className="max-h-4 mt-0.5" src="./src/assets/PinLocation.svg" alt="" />  
+                    <img className="max-h-4 mt-0.5" src="/gleam_wheels/assetsImg/PinLocation.svg" alt="" />  
                     <p className="text-[max(2.7vw)]">{props.place.location}</p>
                 </div>
                 <div className="feature flex items-center gap-1">

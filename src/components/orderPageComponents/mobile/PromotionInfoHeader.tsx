@@ -17,7 +17,7 @@ export function PromotionInfoHeader() {
                         </div>
                         <h1 className="text-[max(12.5vw)] leading-none font-extrabold">105k</h1>
                     </div>
-                    <img className="w-[max(40vw)] h-auto object-contain -translate-y-2.5" src="./src/assets/CarPhotoPromotion.png" alt="" />
+                    <img className="w-[max(40vw)] h-auto object-contain -translate-y-2.5" src="/gleam_wheels/assetsImg/CarPhotoPromotion.png" alt="" />
                 </div>
                 <p className="bottom-2 absolute text-[max(2.2vw)] italic font-thin">Syarat dan ketentuan berlaku</p>
             </div>     

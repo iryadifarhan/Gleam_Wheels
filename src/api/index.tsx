@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Api = axios.create({
     //set default endpoint API
-    baseURL: 'http://localhost:8000'
+    baseURL: 'https://gleam-wheels-backend.vercel.app/api'
 })
 
 export default Api
