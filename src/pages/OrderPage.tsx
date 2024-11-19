@@ -3,13 +3,13 @@ import { PromotionInfoHeader } from "../components/orderPageComponents/mobile/Pr
 import { Navbar } from "../components/universal/Navbar";
 import { Places } from "../dataUtils/IPlaces";
 
-export function OrderPage(props: {isMobile: boolean, places: Places[]}) {
+export function OrderPage(props: {isMobile: boolean, places: Places[], isLoading:boolean}) {
     return(
         props.isMobile
         ?
         <>
         <PromotionInfoHeader />
-        <MobileBody places={props.places} />
+        <MobileBody places={props.places} isLoading={props.isLoading} />
         <Navbar isMobile={props.isMobile} />
         </>
         :

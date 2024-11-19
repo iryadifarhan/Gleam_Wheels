@@ -9,7 +9,9 @@ export function PlaceContents(props: {
     filterFeatures: Array<string>,
     filterRating: boolean,
     filterRange: boolean,
-    filterAvailable:boolean
+    filterAvailable:boolean,
+    filterPrice:boolean,
+    isLoading:boolean
 }) {
     const filteredData = props.places.filter((place) => {
         const searchFlag = props.search == '' ? true : place.name.toLowerCase().includes(props.search.toLowerCase())
@@ -22,7 +24,63 @@ export function PlaceContents(props: {
     return( 
         <>
             <div className="flex flex-col gap-3 mx-5 py-2">
-                {filteredData.sort((a, b) => props.filterRating === true && props.filterRange === true ? a.rating - b.range - b.rating - a.range : props.filterRating === true ? b.rating - a.rating : props.filterRange === true ? a.range - b.range : 0 ).map((place) => (
+                {
+                props.isLoading 
+                ?
+                <div className="flex flex-col border w-full min-h-32 h-full rounded-xl border p-1 shadow-2xl text-balance">
+                  <div className="h-36 w-full object-cover object-top rounded-xl shrink-0 bg-gray-400 animate-pulse"></div>
+                  <div className="flex relative px-4 py-2 items-center justify-between gap-6 h-16">
+                      <div className="textContainer w-10/12 h-full flex flex-col gap-3 ">
+                          <div className="h-4 w-full bg-gray-400 animate-pulse rounded-md"></div>
+                          <div className="h-4 w-full bg-gray-400 animate-pulse rounded-md"></div>
+                      </div>
+                      <div className="h-4 w-1/3 bg-gray-400 animate-pulse rounded-md"></div>
+                      <div className="h-4 w-1/3 bg-gray-400 animate-pulse rounded-md"></div>
+                  </div>
+                </div>
+                :
+                filteredData.length > 0 && props.places.length > 0 
+                ?
+                filteredData.sort((a, b) => {
+                    if (props.filterRating && props.filterRange && props.filterPrice) {
+                      // Combined all: highest rate, cheapest price, and closest range
+                      return (
+                        b.rating - a.rating || // Sort by rating descending
+                        a.pricing - b.pricing ||  // Sort by price ascending
+                        a.range - b.range     // Sort by range ascending
+                      );
+                    } else if (props.filterRating && props.filterPrice) {
+                      // Combined #2: highest rate and cheapest price
+                      return (
+                        a.pricing - b.pricing  ||    // Sort by price ascending
+                        b.rating - a.rating  // Sort by rating descending
+                      );
+                    } else if (props.filterRange && props.filterPrice) {
+                      // Combined #3: closest range and cheapest price
+                      return (
+                        a.pricing - b.pricing ||      // Sort by price ascending
+                        a.range - b.range    // Sort by range ascending
+                      );
+                    } else if (props.filterRating && props.filterRange) {
+                      // Combined #1: highest rate and closest range
+                      return (
+                          a.range - b.range ||     // Sort by range ascending
+                          b.rating - a.rating  // Sort by rating descending
+                      );
+                    } else if (props.filterRating) {
+                      // Highest rate to lowest rate
+                      return b.rating - a.rating;
+                    } else if (props.filterRange) {
+                      // Closest range to furthest range
+                      return a.range - b.range;
+                    } else if (props.filterPrice) {
+                      // Cheapest price to expensive price
+                      return a.pricing - b.pricing;
+                    } else {
+                      // Default (no sorting)
+                      return 0;
+                    }
+                  }).map((place) => (
                     <div key={place.name} className="flex flex-col bg-[#3A94FF] w-full min-h-32 h-full rounded-xl text-white text-balance">
                         <img className="size-5 w-full object-cover object-top rounded-xl h-40 shrink-0" src={place.img_source} alt="" />
                         <div className="flex relative px-7 py-2 items-center justify-between gap-5">
@@ -30,11 +88,11 @@ export function PlaceContents(props: {
                                 <h1 className="font-semibold text-[max(4.2vw)]">{place.name}</h1>
                                 <div className="flex gap-1 items-start">
                                     <FeaturesLogo />
-                                    <div className="flex gap-1 flex-wrap ">
+                                    <div className="flex gap-1 flex-wrap line-clamp-3">
                                         {place.features.filter(it => !it.includes("Promo"))
                                         .map((it, index, filteredFeatures) => (
                                             <p key={index} className="text-[10px]">
-                                                {it}
+                                                {index < 6 ? it : "..."}
                                                 {index !== filteredFeatures.length - 1 ? "," : ""}
                                             </p>
                                         ))}
@@ -57,7 +115,10 @@ export function PlaceContents(props: {
                             </div>
                         </div>
                     </div>
-                ))}        
+                ))
+                :
+                <p>Tempat yang Anda cari tidak dapat ditemukan!</p>
+                }        
             </div>
         </>
     )

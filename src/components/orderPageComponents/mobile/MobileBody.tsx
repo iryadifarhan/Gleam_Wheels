@@ -6,12 +6,13 @@ import { FilterComponent } from "./FilterComponent";
 import { useSearchParams } from "react-router-dom";
 
 
-export function MobileBody(props: {places: Places[]}) {
+export function MobileBody(props: {places: Places[], isLoading:boolean}) {
     const[search, setSearch] = useState('')
     const[filterFeature, setFilterFeature] = useState([''])
     const[filterRating, setFitlerRating] = useState(false)
     const[filterRange, setFilterRange] = useState(false)
     const[filterAvailable, setFilterAvailable] = useState(false)
+    const[filterPrice, setFilterPrice] = useState(false)
 
     const[buttonActives, setButtonActives] = useState([-1])
 
@@ -71,6 +72,13 @@ export function MobileBody(props: {places: Places[]}) {
             return !filterAvailable
         })
     }
+
+    const toggleFilterPrice = (index:number) => {
+        toggleButtonActive(index)
+        setFilterPrice(() => {
+            return !filterPrice
+        })
+    }
     
     const [searchParams] = useSearchParams()
     const feature = searchParams.get("feature");
@@ -86,8 +94,10 @@ export function MobileBody(props: {places: Places[]}) {
     return(
         <div className="orderBody my-8 pb-20">
             <SearchBar search={search} setSearch={setSearch} searchPlaceHolder={"Cari tempat cuci kendaraan"} />
-            <FilterComponent setFilterFeature={toggleFilterFeature} setFilterRating={toggleFilterRating} buttonActives={buttonActives} setFilterRange={toggleFilterRange} setFilterAvailable={toggleFilterAvailable}/>
-            <PlaceContents places={props.places} search={search} filterFeatures={filterFeature} filterRating={filterRating} filterRange={filterRange} filterAvailable={filterAvailable}/>
+            <FilterComponent setFilterFeature={toggleFilterFeature} setFilterRating={toggleFilterRating} buttonActives={buttonActives} 
+            setFilterRange={toggleFilterRange} setFilterAvailable={toggleFilterAvailable} setFilterPrice={toggleFilterPrice}/>
+            <PlaceContents places={props.places} search={search} filterFeatures={filterFeature} filterRating={filterRating} filterRange={filterRange} 
+            filterAvailable={filterAvailable} filterPrice={filterPrice} isLoading={props.isLoading}/>
         </div>
     )
 }

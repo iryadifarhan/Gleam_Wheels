@@ -14,7 +14,7 @@ export function ServiceReachable(props: {
             <h2 className="font-bold mx-5 text-[max(4.75vw)]">Layanan yang dapat ditemui</h2>
             {filteredData.length > 0 
             ? 
-            (<div className="container flex gap-6 overflow-x-scroll mt-1 no-scrollbar">
+            (<div className="container flex gap-6 overflow-x-scroll mt-1 no-scrollbar py-1">
                 {filteredData.map((it, index) => <ServiceComponent key={it.title} service={it} isFirst={index == 0} isLast={index == filteredData.length - 1}/>)
                 }
             </div>) 

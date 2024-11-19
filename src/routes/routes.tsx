@@ -81,13 +81,13 @@ function RoutesIndex(props: {isMobile: boolean}) {
             isLogged={isLogged} user={user} setLog={setLog} setUser={setUser} isLoading={isLoading} />} />  
 
             {/* route "/order" */}
-            <Route path="/order" element={<OrderPage isMobile={props.isMobile} places={places} />} />          
+            <Route path="/order" element={<OrderPage isMobile={props.isMobile} places={places} isLoading={isLoading}/>} />          
             
             {/* route "/history" */}
             <Route path="/history" element={<HistoryPage isMobile={props.isMobile} />} />          
             
             {/* route "/profile" */}
-            <Route path="/profile" element={<ProfilePage isMobile={props.isMobile} />} />          
+            <Route path="/profile" element={<ProfilePage isMobile={props.isMobile} isLogged={isLogged} isLoading={isLoading} user={user} setLog={setLog} setUser={setUser} />} />          
 
             {/* route "/login" */}
             <Route path="/login" element={<LoginPage setLog={setLog} setUser={setUser} />} />          

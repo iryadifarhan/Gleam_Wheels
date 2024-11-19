@@ -14,7 +14,7 @@ export function HomePage(props: {isMobile: boolean, services: Service[], places:
         <>
         <TopHeader isLogged={props.isLogged} user={props.user} setLog={props.setLog} setUser={props.setUser} isLoading={props.isLoading} />
         <HeroSectionMobile />
-        <MobileBody services={props.services} places={props.places} />
+        <MobileBody services={props.services} places={props.places} isLoading={props.isLoading}/>
         <Navbar isMobile={props.isMobile} />
         </>
         :   //desktop

@@ -7,7 +7,7 @@ import { Places } from "../../../dataUtils/IPlaces"
 import { Service } from "../../../dataUtils/IService"
 
 
-export function MobileBody(props: {services: Service[], places: Places[]}) {
+export function MobileBody(props: {services: Service[], places: Places[], isLoading: boolean}) {
     const[search, setSearch] = useState('')
     
     return(
@@ -15,7 +15,7 @@ export function MobileBody(props: {services: Service[], places: Places[]}) {
             <SearchBar search={search} setSearch={setSearch} searchPlaceHolder={"Cari layanan kebersihan"} />
             <PromotionSection />
             <ServiceReachable services={props.services} search={search} />
-            <RecommendedPlaces places={props.places}/>
+            <RecommendedPlaces places={props.places} isLoading={props.isLoading}/>
         </div>
     )
 }
