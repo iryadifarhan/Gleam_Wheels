@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Api from "../api";
 import { ArrowLogo } from "../assets/ArrowLogo";
+import { LoadingSpinner } from "../assets/LoadingSpinner";
 
 export function LoginPage(props: {setLog: any, setUser: any}) {
+    const[isFetching, setFetching] = useState(false)
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -27,6 +29,7 @@ export function LoginPage(props: {setLog: any, setUser: any}) {
 
         try {
             // Send login request
+            setFetching(true)
             const response = await Api.post('/api/users/login', formData);
             
             if(response.data.data == '') {
@@ -38,6 +41,7 @@ export function LoginPage(props: {setLog: any, setUser: any}) {
                 newError.email = !formData.email ? "Email is required" : response.data.message == "Email is not yet registered" ? "Email is not yet registered" : ""
                 newError.password = !formData.password ? "Password is required" : response.data.message == "Password is incorrect" ? "Password is incorrect" : ""
                 
+                setFetching(false)
                 setErrors(newError)
             } else {
                 props.setLog(true); 
@@ -61,6 +65,15 @@ export function LoginPage(props: {setLog: any, setUser: any}) {
     return(
         <>
         <div className="container mx-auto w-[max(70vw)] py-4">
+            {
+                isFetching
+                ?
+                <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50">
+                    <LoadingSpinner />
+                </div>
+                :
+                <></>
+            }
             <Link to={"/"}>
                 <div className="absolute top-5 left-3 px-3 py-2 bg-[#3A94FF] rounded-full font-extrabold text-xl">
                     <ArrowLogo />

@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Api from "../api";
 import { ArrowLogo } from "../assets/ArrowLogo";
+import { LoadingSpinner } from "../assets/LoadingSpinner";
 
 export function RegisterPage(props: {setLog:any, setUser:any}) {
+    const[isFetching, setFetching] = useState(false)
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -66,8 +68,8 @@ export function RegisterPage(props: {setLog:any, setUser:any}) {
     };
 
     const storeAccount = async () => {
-
         try {
+            setFetching(true)
             const response = await Api.post('/api/users', formData)
             console.log(response)
             
@@ -83,6 +85,7 @@ export function RegisterPage(props: {setLog:any, setUser:any}) {
             const errorText: string = error.response.data.message
             if(errorText.includes("Integrity"))
             setErrors({username: "", email: "Email already exist", password: "", passwordConfirmation: ""})
+            setFetching(false)
         }
     }
 
@@ -98,6 +101,15 @@ export function RegisterPage(props: {setLog:any, setUser:any}) {
     return (
         <>
         <div className="container mx-auto w-[max(70vw)] py-4">
+            {
+                isFetching
+                ?
+                <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50">
+                    <LoadingSpinner />
+                </div>
+                :
+                <></>
+            }
             <Link to={"/"}>
                 <div className="absolute top-5 left-3 px-3 py-2 bg-[#3A94FF] rounded-full font-extrabold text-xl">
                     <ArrowLogo />
