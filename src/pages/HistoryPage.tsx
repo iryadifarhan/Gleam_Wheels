@@ -28,7 +28,7 @@ export function HistoryPage(props: {isMobile: boolean, user: User, isLoading:boo
      }
 
      if (!props.isLoading && !props.isLogged) {
-      navigate(-1); // Navigate to the previous page (usually home)
+      // navigate(-1); // Navigate to the previous page (usually home)
       setTimeout(() => navigate("/login", { replace: true }), 0); // Delayed navigation for seamless transition
      }
 
