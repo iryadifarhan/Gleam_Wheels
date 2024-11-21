@@ -110,7 +110,7 @@ export function PlaceDetailPage(props:{places: Places[], isLoading:boolean, user
                                 <div className="flex items-center">
                                     <CalenderLogo /> 
                                     <div className="flex flex-col justify-end">
-                                        <p className="font-semibold leading-none text-[max(4vw)] pt-1">Ramai</p>
+                                        <p className="font-semibold leading-none text-[max(4vw)] pt-1">{`${place?.queue! < 5 ? "Tersedia" : "Ramai"}`}</p>
                                         <p className="text-[max(3vw)] text-slate-500">{`Tersedia ${place?.queue}/${place?.capacity}`}</p>
                                     </div>
                                 </div>

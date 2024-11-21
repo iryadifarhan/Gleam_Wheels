@@ -14,13 +14,6 @@ export function HistoryPage(props: {isMobile: boolean, user: User, isLoading:boo
    const [pendingBookList, setPendingBookList] = useState(true)
    const navigate = useNavigate()
 
-   if (!props.isLogged) {
-      // Navigate to the home page, then to the login page
-      navigate(-1);
-      setTimeout(() => navigate("/login", { replace: true }), 0); // Delayed navigation to ensure it hits "/"
-      return null; // Prevent rendering during navigation
-  }
-
    useEffect(() => {
       const fetchBookList = async () => {
          try {
@@ -34,10 +27,15 @@ export function HistoryPage(props: {isMobile: boolean, user: User, isLoading:boo
          }
      }
 
+     if (!props.isLoading && !props.isLogged) {
+      navigate(-1); // Navigate to the previous page (usually home)
+      setTimeout(() => navigate("/login", { replace: true }), 0); // Delayed navigation for seamless transition
+     }
+
      if(!props.isLoading) {
          fetchBookList()
      }
-   }, [props.isLoading])
+   }, [props.isLoading, props.isLogged])
 
    if(props.isLoading || pendingBookList) {
       return(

@@ -20,11 +20,19 @@ export function HistoryComponent(props:{book: Book, place:Places}) {
     : dateBook.getMonth() == 6 ? "Jul" : dateBook.getMonth() == 7 ? "Agu" : dateBook.getMonth() == 8 ? "Sep"
     : dateBook.getMonth() == 9 ? "Okt" : dateBook.getMonth() == 10 ? "Nov" : dateBook.getMonth() == 11 ? "Des" : ""
 
+    function formatCurrency(value: number) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0, // Removes decimals
+        }).format(value);
+    }
+
     return(
         <div className="flex shadow-[0_1px_10px_0_rgba(0,0,0,0.3)] rounded-3xl p-2 pt-3 pb-7 gap-4 items-center justify-between">
             <div className="flex flex-col items-center ps-2 gap-3">
                 <p className="text-[max(3.5vw)] font-medium">{`${dateBook.getDate()} ${monthText}, ${dateBook.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`}</p>
-                <img className={`${props.book.statusFinished == 2 ? "bg-[#232D40] opacity-25" :"bg-gradient-to-t from-[#003E71] to-[#0076D7]"} rounded-3xl w-[max(25vw)] min-h-[48px] py-2 px-5`} src={`/gleam_wheels/assetsImg/${imageSource}`} alt="" />
+                <img className={`${props.book.statusFinished == 2 ? "bg-[#232D40] opacity-25" :"bg-gradient-to-t from-[#003E71] to-[#0076D7]"} rounded-3xl w-[max(60vw)] min-h-[48px] py-2 px-5`} src={`/gleam_wheels/assetsImg/${imageSource}`} alt="" />
             </div>
             <div className="flex flex-col justify-center gap-[max(5vw)] mt-2 w-full ps-2 -translate-x-2">
                 <p className="font-semibold text-[max(3.4vw)]">{props.place.name}</p>
@@ -35,7 +43,7 @@ export function HistoryComponent(props:{book: Book, place:Places}) {
                 </div>
             </div>
             <div className="flex flex-col justify-between h-[max(26vw)] me-2 relative">
-                <p className="font-light text-[max(3vw)] text-end">Rp.28.000</p>
+                <p className="font-light text-[max(3vw)] text-end">{formatCurrency(props.book.price)}</p>
                 {
                     props.book.statusFinished == 1
                     ?
