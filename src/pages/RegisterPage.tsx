@@ -110,11 +110,10 @@ export function RegisterPage(props: {setLog:any, setUser:any}) {
                 :
                 <></>
             }
-            <Link to={"/"}>
-                <div className="absolute top-5 left-3 px-3 py-2 bg-[#3A94FF] rounded-full font-extrabold text-xl">
-                    <ArrowLogo />
-                </div>
-            </Link>
+            <div onClick={() => navigate(-1)}
+            className="absolute top-5 left-3 px-3 py-2 bg-[#3A94FF] rounded-full font-extrabold text-xl z-50">
+                <ArrowLogo />
+            </div>
             <img className="p-4 pb-0" src="/gleam_wheels/assetsImg/LogoGleamWheels.jpg" alt="" />
             <form
                 className="flex flex-col bg-[#3A94FF] rounded-xl px-4 text-white gap-4 pb-5 pt-3"
@@ -173,7 +172,7 @@ export function RegisterPage(props: {setLog:any, setUser:any}) {
                 </div>
                 <button className="mt-2 p-2 rounded-xl bg-[#232D40]">Register</button>
             </form>
-            <div className="register text-center my-4">
+            <div className="register text-center my-4 text-[max(3.5vw)]">
                 <p>
                     Have an account?
                     <span> </span>

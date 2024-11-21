@@ -13,7 +13,7 @@ export function ServiceComponent(props: {service: Service, isFirst: boolean, isL
                 <div className="container flex flex-col gap-2 mt-2">
                     <hr className="border "/>
                     <div className="duration flex gap-2 items-center">
-                        <img className="w-[max(6.25vw)]" src="/gleam_wheels/assetsImg/Clock.png" alt="" />
+                        <img className="w-[max(6.25vw)]" src="/gleam_wheels/assetsImg/ClockWhite.png" alt="" />
                         <p className="text-[max(4.2vw)]">~{props.service.duration}</p>
                     </div>
                     <hr className="border"/>

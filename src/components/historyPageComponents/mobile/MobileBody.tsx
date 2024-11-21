@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { HistoryComponent } from "./HistoryComponent";
+import Book from "../../../dataUtils/IBook";
+import { Places } from "../../../dataUtils/IPlaces";
+import MockBookDatas from "../../../dataUtils/getMockBookDatas";
 
-export function MobileBody() {
+export function MobileBody(props:{bookLists:Book[], places:Places[]}) {
     const [isRiwayat, setRiwayat] = useState(true);
 
     const HandleClick = (text: string) => {
@@ -30,12 +33,23 @@ export function MobileBody() {
                         <h2>Dalam Proses</h2>
                     </div>
                 </div>
-
+                
                 <div className="mt-5 flex flex-col gap-8">
-                    <HistoryComponent />
-                    <HistoryComponent />
-                    <HistoryComponent />
-                    <HistoryComponent />
+                    {
+                        isRiwayat
+                        ?
+                        MockBookDatas().map((book, index) => {
+                            return(
+                                <HistoryComponent key={index} book={book} place={props.places.filter((it) => it.id == book.place_id)[0]} />
+                            )
+                        })
+                        :
+                        props.bookLists.map((book, index) => {
+                            return(
+                                <HistoryComponent key={index} book={book} place={props.places.filter((it) => it.id == book.place_id)[0]} />
+                            )
+                        })
+                    }
                 </div>
             </div>
         </>

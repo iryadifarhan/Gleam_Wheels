@@ -7,6 +7,22 @@ export function getPlacesDatas() {
             features: ["Promo", "Full Car Wash","Detailing", "Undercarriage"],
             imgSource: "/gleam_wheels/assetsImg/BrownBear.png",
             pricing: 3,
+            bookList: [
+                {   
+                    username: "Rick",
+                    service: "Full Car Wash",
+                    date: "2024-11-24T14:00:00Z",
+                    queueNumber: 1,
+                    statusFinish: false
+                },
+                {   
+                    username: "Morty",
+                    service: "Detailing",
+                    date: "2024-11-24T16:30:00Z",
+                    queueNumber: 2,
+                    statusFinish: false
+                },
+            ],
             queue: 12,
             capacity: 10,
         },

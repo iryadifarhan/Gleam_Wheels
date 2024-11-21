@@ -1,4 +1,5 @@
 export interface Places {
+    id:number,
     name: string,
     location: string,
     rating: number,

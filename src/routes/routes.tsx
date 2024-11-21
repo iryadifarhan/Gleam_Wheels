@@ -12,12 +12,14 @@ import { User } from "../dataUtils/IUser";
 import Api from "../api";
 import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
+import { PlaceDetailPage } from "../pages/PlaceDetailPage";
 
 function RoutesIndex(props: {isMobile: boolean}) {
     const[services, setServices] = useState<Service[]>([])
     const[places, setPlaces] = useState<Places[]>([])
-    const [user, setUser] = useState<User>({} as User);
+    const[user, setUser] = useState<User>({} as User);
 
+    const[isUserNameChanged, setUserNameChanged] = useState(false)
     const[isLogged, setLog] = useState(false)
     const[isLoading, setLoading] = useState(true)
     const[dataUserPending, setUserPending] = useState(true)
@@ -27,6 +29,7 @@ function RoutesIndex(props: {isMobile: boolean}) {
     useEffect(() => {
         if (!dataUserPending && !dataPlacePending) {
             setLoading(false);
+            console.log("fetch data success")
         }
     }, [dataUserPending, dataPlacePending]);
 
@@ -43,18 +46,19 @@ function RoutesIndex(props: {isMobile: boolean}) {
                         { headers: { Authorization: `Bearer ${token}` } }
                     );
                     setUser(response.data.data);
+                    console.log("mount user")
                 } catch (error) {
                     console.error("Error fetching user data:", error);
                 } finally {
-                    setUserPending(false);
+                    setUserPending(false)
                 }
             } else {
-                setUserPending(false);
+                setUserPending(false)
             }
         };
 
         checkToken();
-    }, []);
+    }, [isUserNameChanged]);
 
     // Fetch places data
     useEffect(() => {
@@ -83,11 +87,14 @@ function RoutesIndex(props: {isMobile: boolean}) {
             {/* route "/order" */}
             <Route path="/order" element={<OrderPage isMobile={props.isMobile} places={places} isLoading={isLoading}/>} />          
             
+            {/* route "/order" */}
+            <Route path="/place/detail/:placeName" element={<PlaceDetailPage places={places} isLoading={isLoading} user={user}/>}/>
+
             {/* route "/history" */}
-            <Route path="/history" element={<HistoryPage isMobile={props.isMobile} />} />          
+            <Route path="/history" element={<HistoryPage isMobile={props.isMobile} user={user} isLoading={isLoading} isLogged={isLogged} places={places}/>} />          
             
             {/* route "/profile" */}
-            <Route path="/profile" element={<ProfilePage isMobile={props.isMobile} isLogged={isLogged} isLoading={isLoading} user={user} setLog={setLog} setUser={setUser} />} />          
+            <Route path="/profile" element={<ProfilePage isMobile={props.isMobile} isLogged={isLogged} isLoading={isLoading} user={user} setLog={setLog} setUser={setUser} isUserNameChanged={isUserNameChanged} setUserNameChanged={setUserNameChanged}/>} />          
 
             {/* route "/login" */}
             <Route path="/login" element={<LoginPage setLog={setLog} setUser={setUser} />} />          
